@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>New List</title>
+    <style type="text/css", font-family="微软雅黑">
+
+    *{
+        padding:0;
+        margin:0;
+    }
+    .box{
+        width:600px;
+        height:290px;
+        border:1px solid #d8d8d6;
+        margin:50px auto;
+        overflow:hidden;
+    }
+    .box .line{
+        width:560px;
+        height:50px;
+        margin:0 auto;
+        border-bottom:1px solid #ddd;
+        line-height:50px;
+    }
+    .box ul{
+        list-style:none;
+        width:560px;
+        height:238px;
+        padding:0;
+        margin:7px auto 0;
+    }
+    .box ul li{
+        height:36px;
+        border-bottom:1px solid #ddd;
+        bakcground: #F5FFFA;
+    }
+    .box ul a{
+        float:left;
+        height:36px;
+        font:normal 14px/36px '微软雅黑';
+        text-decoration: none;
+        text-indent: 30px;
+        color:#696969;
+        background: #FFFFFF;
+    }
+    .box ul a:hover{
+        color:blue;
+    }
+    .box ul p{
+        float:right;
+        height: :16px;
+        font:italic 11px/20px '微软雅黑';
+        color:#778899;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class='line'><span><h1>New List</h1></span></div>
+        <ul>
+            {% for t, c in news_dict.items() %}
+            <li><a href={{url_for('files', filename=t)}}> {{ t }} </a><p> {{ c[1] }} </p></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>

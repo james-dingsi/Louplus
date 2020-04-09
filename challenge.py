@@ -10,7 +10,7 @@ time_sheet = {}  # 用于导入time表中的数据，也以课程名称为key
 out_data = {} # 整合后的字典，存储combine中待写数据
 
 def combine():
-	courses = load_workbook('courses.xlsx')
+	courses = load_workbook('james_book.xlsx')
 
 	# 提取students表中的数据
 	students = courses['students']
@@ -18,7 +18,6 @@ def combine():
 	ct_title = students['A1'].value
 	kn_title = students['B1'].value
 	sn_title = students['C1'].value
-#	print(courses.sheetnames)
 	for row in students.rows:
 		st_sheet[row[1].value] = [row[0].value, row[2].value]     # row[2]是创建时间
 	del st_sheet[kn_title]     # 删除存有表头信息的键值对
@@ -55,18 +54,6 @@ def combine():
 	# 写入Excel文件
 	courses.save('courses.xlsx')
 	courses.close()
-'''
-	# 由于不能查看Excel文件，所以测试表中数据是否准确
-	print('sheetnames: ', courses.sheetnames)
-	cell = combine['A1':'D11']
-	for item in cell:
-		for ce in item:
-			print(ce.value)
-'''
-
-"""
-	用于拆分年份后生成工作簿的函数
-"""
 
 def split():
 	courses = load_workbook('courses.xlsx')
@@ -113,10 +100,6 @@ def split():
 			new_wb.save(new_wb_name)      #存储到新的按年分割的文件中
 		del comb_dict[y]  # 在数据总字典中删除已匹配年份的键值对
 
-
-
-
 if __name__ == '__main__':
 	combine()
 	split()
-	 

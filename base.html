@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang = "zh">
+<head>
+    <meta charset="utf-8">
+    <title> {{ filename }} </title>
+    <style type="text/css", font-family="微软雅黑">
+</head>
+<body>
+    <div>
+        {% block header %}
+            <p> <h1> {{ title }} </h1></p>
+        {% endblock %}
+    </div>
+    <div>
+        {% block content %}
+            <p> </p>
+        {% endblock %}
+    </div>
+    <div id="footer">
+        {% block footer %}
+        <a href={{url_for('index')}}>返回新闻列表</a>
+        &copy; Copyright 2017 by <a href="http://www.shiyanlou.com/">shiyanlou</a>.
+        {% endblock %}
+    </div>
+</body>
