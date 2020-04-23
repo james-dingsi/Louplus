@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{news['title']}}
+{% endblock %}
+
+{% block content %}
+    <h1> {{ news['title'] }} </h1>
+    <h4> {{ news['created_time'] }} </h4>
+
+    
+    	<ul>
+    		{% for tag in news.tags %}
+    		 <li> <div font size="1" color="red">{{ tag  }}</div>  </li>
+    		{% endfor %}
+    	</ul>
+    
+    <p></p>
+    <h5> {{ news['content'] }} </h5> 
+{% endblock %} 
