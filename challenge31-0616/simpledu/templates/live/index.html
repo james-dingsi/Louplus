@@ -3,8 +3,11 @@
 {% block title %}Live{% endblock %}
 
 {% block body %}
+<!--将页面分成9:3的两栏，左边是直播窗口，右边是聊天窗口-->
 <div class="row">
   <div class="col-md-9">
+    <!-- 宽度为100%，代表适应它所放入div的宽度，高度为500px，controls表示显示视频控制条-->
+    <video id="videoElement" width="100%" height="500px" controls="controls"></video>
   </div>
   <div class="col-md-3">
   </div>
@@ -13,5 +16,26 @@
 
 {% block tail_js %}
 {{ super() }}
+<!--继承了父模版的js并引入了flv.js的CDN文件，将flash转为H5以适应不支持flash的浏览器 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flv.js/1.3.3/flv.min.js"></script>
+<script>
+if (flvjs.isSupported()) {
+    // 获取 video 标签
+    var videoElement = document.getElementById('videoElement');
+   // 初始化播放器
+    var flvPlayer = flvjs.createPlayer({
+        // 流的类型
+        type: 'flv',
+        // 是否是直播
+        isLive: true,
+        // 直播流地址
+      <!-- 需随时更新-->
+        url: 'http://itshiyan.com/AppName/StreamName.flv?auth_key=1508294137-0-0-c12501a4ebb28d565a95187075cc5ee0'
+    });
+    flvPlayer.attachMediaElement(videoElement);
+    flvPlayer.load();
+    // 播放直播
+    flvPlayer.play();
+}
+</script
 {% endblock %}
