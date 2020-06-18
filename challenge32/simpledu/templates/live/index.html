@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+Live
+{% endblock %}
+
+{% block body %}
+
+<!--将页面分成9:3的两栏，左边是直播窗口，右边是聊天窗口-->
+<div class="row">
+  <div class="col-md-9">
+    <!-- 宽度为100%，代表适应它所放入div的宽度，高度为500px，controls表示显示视频控制条-->
+    <video id="videoElement" width="100%" height="500px" controls="controls"></video>
+          <div class="jumbotron">
+        <h4>直播名称 {{ live.name }}</h4>
+        <h3>直播用户 {{ live.author.username }}</h3>
+      </div>
+  </div>
+  <div class="col-md-3">
+  </div>
+</div>
+{% endblock %}
+
+{% block tail_js %}
+{{ super() }}
+<!--继承了父模版的js并引入了flv.js的CDN文件，将flash转为H5以适应不支持flash的浏览器 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flv.js/1.3.3/flv.min.js"></script>
+<script>
+if (flvjs.isSupported()) {
+    // 获取 video 标签
+    var videoElement = document.getElementById('videoElement');
+   // 初始化播放器
+    var flvPlayer = flvjs.createPlayer({
+        // 流的类型
+        type: 'flv',
+        // 是否是直播
+        isLive: true,
+        // 直播流地址
+      <!-- 需随时更新-->
+        url: 'https://d1--cn-gotcha02.bilivideo.com/live-js/438692/live_256170708_6043553.flv?cdn=cn-gotcha02&expires=1592452491&len=0&oi=2016015566&pt=web&qn=10000&trid=b82c482c505c45b9a34ab19bb4bdc982&sigparams=cdn,expires,len,oi,pt,qn,trid&sign=cd97b6c2596ffaec66bb89267c519c33&ptype=0&platform=web&pSession=RYTMBipT-rXZe-4sWk-hPz7-EX1n7kFw3mDQhttps://d1--cn-gotcha02.bilivideo.com/live-js/438692/live_256170708_6043553.flv?cdn=cn-gotcha02&expires=1592452491&len=0&oi=2016015566&pt=web&qn=10000&trid=b82c482c505c45b9a34ab19bb4bdc982&sigparams=cdn,expires,len,oi,pt,qn,trid&sign=cd97b6c2596ffaec66bb89267c519c33&ptype=0&platform=web&pSession=RYTMBipT-rXZe-4sWk-hPz7-EX1n7kFw3mDQhttps://d1--cn-gotcha02.bilivideo.com/live-js/438692/live_256170708_6043553.flv?cdn=cn-gotcha02&expires=1592452491&len=0&oi=2016015566&pt=web&qn=10000&trid=b82c482c505c45b9a34ab19bb4bdc982&sigparams=cdn,expires,len,oi,pt,qn,trid&sign=cd97b6c2596ffaec66bb89267c519c33&ptype=0&platform=web&pSession=RYTMBipT-rXZe-4sWk-hPz7-EX1n7kFw3mDQ'
+    });
+    flvPlayer.attachMediaElement(videoElement);
+    flvPlayer.load();
+    // 播放直播
+    flvPlayer.play();
+}
+</script
+{% endblock %}
