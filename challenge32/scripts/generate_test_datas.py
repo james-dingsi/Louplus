@@ -44,9 +44,9 @@ def iter_chapters():
 
 def iter_lives():
 	yield Live(
-		livename = fake.sentence(),
+		name = fake.sentence(),
 		live_url = '',
-		liveuser_id = 1
+		user_id = 1
 		)
 
 def run():
