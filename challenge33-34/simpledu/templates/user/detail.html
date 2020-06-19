@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{%block title %}Home{% endblock %}
+
+{%block body %}
+<h1>ID: {{user_info.id}}</h1>
+<h1>Username: {{ user_info.username }}</h1>
+<h1>Published courses:</h1>
+	{% for course in user_info.publish_courses %}
+		<ul>{{ course.name }}</ul>		
+	{% endfor %}
+
+
+{% endblock %}
