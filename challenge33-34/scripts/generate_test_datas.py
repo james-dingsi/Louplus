@@ -13,10 +13,11 @@ fake = Faker()
 
 def iter_users():
 	yield User(
-		username = 'Jack Lee',
-		email = 'jack_lee@example.com',
-		password = 'zxcvbnm',
-		job = 'Engineer')
+		username = 'admin',
+		email = 'admin@shiyanlou.com',
+		password = 'shiyanlou',
+		job = 'admin',
+		role = 30)
 
 def iter_courses():
 	author = User.query.filter_by(username='Jack Lee').first()
@@ -41,14 +42,14 @@ def iter_chapters():
 				#
 				video_duration = '{}:{}'.format(randint(10, 30), randint(10, 59))
 				)
-
+'''
 def iter_lives():
 	yield Live(
 		name = fake.sentence(),
 		live_url = '',
 		user_id = 1
 		)
-
+'''
 def run():
 	for user in iter_users():
 		db.session.add(user)
@@ -59,8 +60,8 @@ def run():
 	for chapter in iter_chapters():
 		db.session.add(chapter)
 
-	for live in iter_lives():
-		db.session.add(live)
+#	for live in iter_lives():
+#		db.session.add(live)
 		
 	try:
 		db.session.commit()
