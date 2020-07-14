@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Seiya 数据分析系统 {% endblock %}
+
+{% block content %}
+<!-- card -->
+<div class="row">
+	<div class="col">
+		<div class="card-deck">
+		  <div class="card" style="width:200px">
+		    <img class="card-img-top" src="https://news.domain.cn/uploads/allimg/160324/104582-1603241IQ0c3.png" alt="Card image cap" width="220" height="200">
+		    <div class="card-body">
+		      <h4 class="card-title">拉钩网职位数据分析</h4>
+		      <p class="card-text">通过对拉钩网发布的职位相关信息进行分析得到的统计结果</p>
+		      <a href="{{ url_for('job.index') }}" class="btn btn-primary">详情</a>
+		    </div>
+		  </div>
+		  <div class="card" style="width:200px">
+		    <img class="card-img-top" src="https://dss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/e5ee9530731b688999fa977e1efb45f8_222_222.jpg" alt="Card image cap"  width="220" height="200">
+		    <div class="card-body">
+		      <h4 class="card-title">链家网租房数据分析</h4>
+		      <p class="card-text">对链家厦门地区出租房源进行相关信息的分析后的统计结果</p>
+		      <a href="{{ url_for('house.index') }}" class="btn btn-primary">详情</a>
+		    </div>
+		  </div>
+		  <div class="card" style="width: 200px">
+		    <img class="card-img-top" src="http://img.mp.itc.cn/upload/20161125/74b76d5288934021947d562639c7abba.jpg" alt="Card image cap" width="220" height="200">
+		    <div class="card-body">
+		      <h4 class="card-title">点评网餐馆数据分析</h4>
+		      <p class="card-text">大众点评网中关于本地餐馆的各类数据进行分析厚的图表</p>
+		      <a href="{{ url_for('restaurant.index')}}" class="btn btn-primary">详情</a>
+		    </div>
+		  </div>
+	</div>
+</div>
+{% endblock %}
